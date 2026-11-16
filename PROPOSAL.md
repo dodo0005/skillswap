@@ -9,12 +9,16 @@
 
 | URL | Content | Dynamic segment? | Rendering strategy and why |
 |---|---|---|---|
-| / | Homepage with an introduction, featured skills and popular categories| No | Static rendering because the content does not need to change on every request |
-| /skills |Browse, search and filter all available skills |No |Dynamic rendering because the list can change when users add or update skills |
-| /skills/[id] |Details of a specific skill, including its description and owner |Yes | Dynamic rendering because the content depends on the selected skill|
-| /members/[id] |User profile, biography, offered skills and wanted skills |Yes |Dynamic rendering because profile information is user-specific and can change |
-| /exchanges |Overview of sent and received exchange requests |No | Dynamic rendering because the information is personalized and frequently updated|
-| /exchanges[id] |Details of an exchange, including participants, skills and status|Yes |Dynamic rendering because the content depends on a specific exchange |
+## Pages
+
+| URL | Purpose | Dynamic segment? | Rendering strategy and why |
+|---|---|---|---|
+| `/` | Homepage with introduction, featured skills and popular categories | No | Static rendering because the content does not need to change on every request |
+| `/skills` | Browse all available skills | No | Static rendering because the skills catalogue can be generated at build time |
+| `/skills/[id]` | Details of one skill and its owner | Yes | Static Site Generation (SSG) because individual skill pages can be generated at build time using known skill IDs |
+| `/members/[id]` | Public profile showing skills offered and wanted | Yes | Static Site Generation (SSG) because public member profiles can be generated at build time |
+| `/exchanges` | Overview of sent and received exchange requests | No | Dynamic rendering (SSR) because exchange information is personalized and needs to be retrieved for each request |
+| `/exchanges/[id]` | Details of an exchange, including participants, skills and status | Yes | Dynamic rendering (SSR) because exchange details depend on frequently changing request information |
 
 ## Data
 
